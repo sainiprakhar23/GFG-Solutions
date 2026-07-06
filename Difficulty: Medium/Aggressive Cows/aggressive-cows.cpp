@@ -20,6 +20,7 @@ class Solution {
         int ans;
         while(low<=high){
             int mid = (low+high)/2;
+            //ot int mid = low + (high- low)/2 for intergerr overflow
             // function to check
             if(isPossible(mid,arr,k)==true){
                 ans= mid;

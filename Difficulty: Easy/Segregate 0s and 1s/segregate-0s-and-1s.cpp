@@ -1,26 +1,36 @@
 class Solution {
   public:
   
-    void segregate0and1(vector<int> &arr) {
-        // code here
-        int i=0;
-        int j=arr.size()-1;
+    void swap(int &a , int &b){
+        int temp=a;
+        a=b;
+        b=temp;
         
-        while(i < j){
-            if(arr[i]==1 && arr[j]==0){
-                // swap
-                int temp = arr[i];
-                arr[i]=arr[j];
-                arr[j]=temp;
-                i++;
-                j--;
+    }
+    void segregate0and1(vector<int> &arr) {
+        int n = arr.size();
+        int left=0;
+        int right = n-1;
+        
+        while(left < right){
+            while(left<right && arr[left]==0){
+                left++;
             }
-            if(arr[i]==0){
-                i++;
+            while(left<right && arr[right]==1){
+                right--;
             }
-            if(arr[j]==1){
-                j--;
+            
+            if(left < right  &&  arr[left]==1 && arr[right]==0){
+                swap(arr[left],arr[right]);
+                left++;
+                right--;
             }
+            
+            // if(left<right){
+            //     swap(arr[left],arr[right]);
+            //     left++;
+            //     right--;
+            // }
 
         }
     }
